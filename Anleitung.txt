@@ -1,0 +1,60 @@
+HowTo: Skripte installieren und nutzen
+
+Alle Skripte wurden in RetroPie 3.0 BETA 2 erfolgreich getestet und laufen
+einwandfrei. Einzige Ausnahme ist das "Reload Xbox-Controller.sh", was von
+einem nachinstallierten xboxdrv-Modul ausgeht. Sofern am Retropie-Image nichts
+geaendert wurde, laufen alle anderen Skripte out-of-the-box.
+
+Saemtliche Skripte (mit der Endung ".sh") muessen in den "Ports"-Ordner
+vom ROM-Verzeichnis kopiert werden.
+
+UNTER WINDOWS:
+Oeffnet den Windows-Explorer, gebt in der Adressleiste "\\retropie" ein und
+drueckt auf ENTER. Navigiert nacheinander in das Verzeichnis "roms", danach
+in "ports". Dort werden die Skripts einfach reinkopiert.
+
+Damit die Skripte auch ausgefuehrt werden, muss ihnen das "Ausfuehr"-Bit
+gesetzt werden. Greift auf den Raspberry ueber eine Shell zu (etwa ueber
+putty, oder schliesst eine Tastatur am Raspberry an und beendet die
+Emulationstation) und navigiert in folgendes Verzeichnis:
+
+/home/pi/RetroPie/roms/ports
+
+dort gebt ihr allen sh-Dateien in diesem Verzeichnis Ausfuehr-Rechte:
+
+chmod +x *.sh
+
+Falls die Emulationstation noch nicht beendet wurde, muesst ihr das noch
+ tun ("Quit Emulationstation", nach 5 Sekunden startet die automatisch neu),
+damit die Station die neuen Skripte findet und zur Auswahl anzeigt.
+
+das wars; die Skripte laufen nun, wenn man sie auswaehlt. Einzige Ausnahme
+ist das "Reload Xbox-Controller.sh"-Skript, das von einem installierten
+xboxdrv-Kernelmodul ausgeht und ggf. vorher nachinstalliert werden muss.
+
+
+ERKLAERUNG DER EINZELNEN SKRIPTE:
+- Change Audio to Cinch.sh
+Wie der Dateiname bereits sagt, wird die Audioausgabe auf Cinch umgeleitet.
+Stellt sicher, dass "sudo" keine Passwortabfrage taetigt! (Standard bei
+Raspbian und Retropie)
+
+- Change Audio to HDMI.sh
+Wie voriges Skript, nur statt Cinch auf HDMI. Auch hier: Stellt sicher, dass
+"sudo" automatisch die Erlaubnis erteilt!
+
+- Reload Xbox-Controller.sh
+Laedt den xboxdrv-Treiber neu. Nuetzlich fuer alle, die nicht das Standard-
+Kernelmodul verwenden wollen, aber auch keine udev-Regel gesetzt haben und
+trotzdem im Laufenden Betrieb neue XBox-Controller anschliessen wollen...
+Auch hier gilt: Stellt sicher, dass "sudo" keine Passwortabfrage macht.
+
+- SNES - Enable Multitap.sh
+Schreibt die retroarch.cfg im SNES-Configverzeichnis so um, dass Multitap
+aktiviert ist. Nuetzlich bei Spielen, die das unterstuetzen (Bomberman).
+
+- SNES - Disable Multitap.sh
+Loescht saemtliche Einstellungen der retroarch.cfg im SNES-Configverzeichnis,
+die auf Multitap-Unterstuetzung hinweisen. Nuetzlich, wenn Spiele nicht
+starten wollen, weil sie Multitap erkannt haben (Super Mario World 2:
+Yoshis Island).
